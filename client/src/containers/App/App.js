@@ -16,13 +16,13 @@ class App extends React.Component {
 
   renderUsers = () => {
     let users = [];
-    this.state.users.forEach(user => users = [...users, <div>{user.id}, {user.username}</div>]);
+    this.state.users.forEach((user, i) => users = [...users, <div key={i}>{user.id}, {user.username}</div>]);
     return users;
   }
 
   render() {
     return (
-      <div className="App">
+      <div className="App" data-test="component-app">
         <div>Users</div>
         <div>{this.renderUsers()}</div>
       </div>
