@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"node ./bin/www\" \"cd client && npm start\""
+    "start": "concurrently \"node ./bin/www\" \"cd client && npm start\"",
+    "test": "jest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,6 +15,11 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "jest": "^25.1.0"
+  },
+  "jest": {
+    "verbose": true,
+    "modulePathIgnorePatterns": ["client"]
   }
 }
