@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
+import Axios from 'axios';
 
 class App extends React.Component {
   state = {
     users: [],
   }
 
-  async componentDidMount() {
-    fetch('/users')
-    .then(response => response.json())
+  componentDidMount() {
+    Axios.get('/users')
+    .then(response => response.data)
     .then(users => {
       this.setState({ users });
     });
@@ -18,7 +19,9 @@ class App extends React.Component {
     let users = [];
     this.state.users.forEach((user, i) => users = [
       ...users, 
-      <div key={i}>{user.id}, {user.firstName}, {user.lastName}, {user.email}, {user.facebookUrl}, {user.instagramUrl}, {user.twitterUrl}, {user.password}</div>]);
+      <div key={i}>
+        {user.id}, {user.firstName}, {user.lastName}, {user.email}, {user.facebookUrl}, {user.instagramUrl}, {user.twitterUrl}, {user.password}
+      </div>]);
     return users;
   }
 
